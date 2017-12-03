@@ -1,0 +1,25 @@
+{
+  "name": "the-alchemy-machine",
+  "version": "1.0.0",
+  "description": "creating amazing potions from strange ingredients ",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThomBian/the-alchemy-machine.git"
+  },
+  "author": "Thomas Bianchini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThomBian/the-alchemy-machine/issues"
+  },
+  "homepage": "https://github.com/ThomBian/the-alchemy-machine#readme",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "express": "^4.16.2",
+    "mocha": "^4.0.1"
+  }
+}
