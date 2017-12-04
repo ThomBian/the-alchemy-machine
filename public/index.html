@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="alchemyApp" lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" media="screen">
+        <link rel="stylesheet" href="./app.css">
+    </head>
+    <body ng-controller="RecipeController" class="container-fluid">
+        <h1>Make your potion !</h1>
+        <div class="row">
+            <h1 class="col-md-12 alert alert-success">Here is your inventory : </h2>
+            <ul class="list-unstyled">
+                <li class="col-md-4 btn btn-success inventoryItem" 
+                    ng-repeat="ingredient in inventory"
+                    ng-click="addToCauldron(ingredient)">
+                    <span class="stock">{{ingredient.stock}}</span> <span class="name">{{ingredient.name}}</span>
+                </li>
+            </ul>        
+        </div>
+       
+        <div class="row">
+            <h1 class="col-md-12 alert alert-success">Your current cauldron <span class="badge">{{3 - basket.length}}</span></h2>
+            <ol class="row-fluid">
+                <li class="col-md-12 h3" ng-repeat="ingredient in basket track by $index">
+                    <span>{{ingredient}}</span>
+                </li>
+            </ol>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <button type="button" class="btn btn-primary btn-lg col-md-4 centered">Create !</button>
+            <button type="button" class="btn btn-secondary btn-lg col-md-4 centered" ng-click="resetBasket()">Reset !</button>
+            <div class="col-md-2"></div>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="../node_modules/angular/angular.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
