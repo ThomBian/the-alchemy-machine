@@ -5,7 +5,7 @@ chai.should();
 
 const expect = chai.expect;
 
-const controller = require('../modules/controller');
+const mixer = require('../modules/mixer');
 
 describe('Controller tests', function(){
     describe('Mixing ingredients to get reicpe', function() {
@@ -28,7 +28,7 @@ describe('Controller tests', function(){
             const ingredients = ['yolk', 'creem', 'bacon'];
             
             // when 
-            const result = controller.mix(ingredients, recipes);
+            const result = mixer.mix(ingredients, recipes);
 
             // then
             expect(result).to.not.be.undefined;
@@ -40,7 +40,7 @@ describe('Controller tests', function(){
             const ingredients = ['olive oil', 'olive oil', 'olive oil'];
             
             // when 
-            const result = controller.mix(ingredients, recipes);
+            const result = mixer.mix(ingredients, recipes);
 
             // then
             expect(result).to.not.be.undefined;
@@ -52,7 +52,7 @@ describe('Controller tests', function(){
             const ingredients = ['tomato', 'creem', 'olive oil'];
 
             // when
-            expect(() => controller.mix(ingredients, recipes))
+            expect(() => mixer.mix(ingredients, recipes))
             //then
                 .to.throw('Recipe not found for thoses ingredients');
         });
@@ -62,7 +62,7 @@ describe('Controller tests', function(){
             const ingredients = ['olive oil', 'olive oil', 'creem'];
 
             // when
-            expect(() => controller.mix(ingredients, recipes))
+            expect(() => mixer.mix(ingredients, recipes))
             //then
                 .to.throw('Recipe not found for thoses ingredients');
         });
@@ -72,7 +72,7 @@ describe('Controller tests', function(){
             const ingredients = ['ing1', 'ing2'];
 
             // when
-            expect(() => controller.mix(ingredients, recipes))
+            expect(() => mixer.mix(ingredients, recipes))
             //then
                 .to.throw('Number of ingredients does not match the requirements, need 3');
         });

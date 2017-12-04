@@ -9,24 +9,26 @@ let inventory;
 let recipes;
 
 function loadInventory () {
-    return loadDBFile(INVENTORY_DB).then(data => inventory = data);
+    return loadDBFile(INVENTORY_DB).then(data => {
+        inventory = data;
+        return inventory;
+    });
 }
 
 function loadRecipes () {
-    return loadDBFile(RECIPES_DB).then(data => recipes = data);
+    return loadDBFile(RECIPES_DB).then(data => {
+        recipes = data;
+        return recipes;
+    });
 }
 
-function getInventory () {
-    return inventory;
-}
-
-function getRecipes () {
-    return recipes;
+function init () {
+    return Promise.all([
+        loadRecipes(),
+        loadInventory()
+    ]);
 }
 
 module.exports = {
-    loadInventory,
-    loadRecipes,
-    getInventory,
-    getRecipes
+   init
 }
