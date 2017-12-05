@@ -6,5 +6,9 @@
     {
         "name" : "old Gallic potion",
         "ingredients" : ["lamaDrool", "parsley", "ratHead"]
+    },
+    {
+        "name" : "intelligence potion",
+        "ingredients" : ["apple", "orange", "foxTail"]
     }
 ]
