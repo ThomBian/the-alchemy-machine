@@ -46,6 +46,20 @@ describe('Controller tests', function(){
             expect(inventory['foxTail']).to.be.equal(nbFoxtail - 1);
         });
 
+        it('should say the same recipe twice for the same ingredients', function(){
+            // given
+            const ingredients = ['parsley', 'vinegar', 'foxTail'];
+
+            // when
+            const recipeNameFound = controller.mix(ingredients);
+            const recipeNameFound2 = controller.mix(ingredients);
+
+            // then
+            expect(recipeNameFound).to.be.equal('invisibility');
+            expect(recipeNameFound).to.be.equal(recipeNameFound2);
+
+        });
+
         it('should not return a recipe and should decrease the amount of ingredients', function(){
             // given
             const ingredients = ['parsley', 'vinegar', 'ratHead'];

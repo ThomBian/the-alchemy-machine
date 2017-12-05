@@ -3,6 +3,13 @@ const app = angular.module('alchemyApp', []);
 const SERVER_URL = 'http://localhost:3000';
 const SERVER_API_URL = `${SERVER_URL}/api`;
 
+const SUCCESS_MESSAGE = 'And you have done...';
+const FAILURE_MESSAGE = 'Ooops... it has not end well...';
+
+const RESULT_MODAL = $('#resultMingModal');
+const RESULT_MODAL_TITLE = RESULT_MODAL.find("#result-title");
+const RESULT_MODAL_CONTENT = RESULT_MODAL.find('#result');
+
 app.controller('RecipeController', function RecipeController($scope, $http){
     
     $scope.basket = [];
@@ -32,7 +39,13 @@ app.controller('RecipeController', function RecipeController($scope, $http){
             }
             return request(reqConfig)
                 .then(response => {
-                    console.log(response.data.result);
+                    const data = response.data;
+                    console.log(data);
+                    const title = data.success ? SUCCESS_MESSAGE : FAILURE_MESSAGE;
+                    const result = data.success ? data.result : data.error;
+                    RESULT_MODAL_TITLE.text(title);
+                    RESULT_MODAL_CONTENT.text(result);
+                    RESULT_MODAL.modal({show : true});
                 }, response => {
                     console.error(response.data);
                 });

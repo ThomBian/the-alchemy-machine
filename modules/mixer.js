@@ -4,7 +4,7 @@ function mix (ingredients, recipes) {
     }
     for (let i = 0; i < recipes.length; ++i) {
         const curRecipe = recipes[i];
-        let ingredientsToTest = curRecipe.ingredients;
+        let ingredientsToTest = curRecipe.ingredients.slice();
         let found = true;
         for (let j = 0; j < ingredients.length; ++j) {
             const curIngredient = ingredients [j];
