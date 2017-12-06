@@ -1,14 +1,42 @@
 [
     {
-        "name" : "invisibility",
+        "name" : "Invisibility potion",
         "ingredients" : ["parsley", "vinegar", "foxTail"]
     },
     {
-        "name" : "old Gallic potion",
+        "name" : "Old Gallic potion",
         "ingredients" : ["lamaDrool", "parsley", "ratHead"]
     },
     {
-        "name" : "intelligence potion",
-        "ingredients" : ["apple", "orange", "foxTail"]
+        "name" : "Clairvoyance",
+        "ingredients" : ["snail", "witchesFinger", "foxTail"]
+    },
+    {
+        "name" : "Soporific potion",
+        "ingredients" : ["asphodel", "artemesia", "water"]
+    },
+    {
+        "name" : "Fast growing potion",
+        "ingredients" : ["cherry", "cherry", "butterfly"]
+    },
+    {
+        "name" : "Dwarf potion",
+        "ingredients" : ["toadSlime", "pumpkin", "ratHead"]
+    },
+    {
+        "name" : "Flying potion",
+        "ingredients" : ["butterfly", "butterfly", "herbesDeProvence"]
+    },
+    {
+        "name" : "Ratatouille",
+        "ingredients" : ["herbesDeProvence", "tomatoe", "slug"]
+    },
+    {
+        "name" : "Love potion",
+        "ingredients" : ["nut", "cherry", "raspberry"]
+    },
+    {
+        "name" : "Compilation potion",
+        "ingredients" : ["witchesFinger", "RJ45Wire", "cherry"]
     }
 ]

@@ -39,7 +39,7 @@ describe('Controller tests', function(){
 
             // then
             expect(recipeNameFound).to.not.be.undefined;
-            recipeNameFound.should.be.equal('invisibility');
+            recipeNameFound.should.be.equal('Invisibility potion');
             inventory = controller.getInventory();
             expect(inventory['parsley']).to.be.equal(nbParsley - 1);
             expect(inventory['vinegar']).to.be.equal(nbVinegar - 1);
@@ -55,7 +55,7 @@ describe('Controller tests', function(){
             const recipeNameFound2 = controller.mix(ingredients);
 
             // then
-            expect(recipeNameFound).to.be.equal('invisibility');
+            expect(recipeNameFound).to.be.equal('Invisibility potion');
             expect(recipeNameFound).to.be.equal(recipeNameFound2);
 
         });
@@ -114,25 +114,30 @@ describe('Controller tests', function(){
 
         it('should get the inventory with proper format [{name: aname, stock: 12}]', function(){
             // given
-            const expected = [{
-                name: 'vinegar', stock: 14
-            },{
-                name: 'ratHead', stock: 13
-            },{
-                name: 'lamaDrool', stock: 10
-            },{
-                name: 'parsley', stock: 9
-            },{
-                name: 'hedgehogThorn', stock: 1
-            },{
-                name: 'foxTail', stock: 8
-            },{
-                name: 'carrot', stock: 0
-            },{
-                name: 'apple', stock: 5
-            },{
-                name: 'orange', stock: 8
-            }];
+            const expected = [{ name: 'vinegar', stock: 14 },
+            { name: 'ratHead', stock: 13 },
+            { name: 'lamaDrool', stock: 10 },
+            { name: 'parsley', stock: 9 },
+            { name: 'hedgehogThorn', stock: 5 },
+            { name: 'foxTail', stock: 8 },
+            { name: 'carrot', stock: 0 },
+            { name: 'tomatoe', stock: 2 },
+            { name: 'asphodel', stock: 40 },
+            { name: 'artemesia', stock: 12 },
+            { name: 'water', stock: 100 },
+            { name: 'cherry', stock: 20 },
+            { name: 'pineapple', stock: 8 },
+            { name: 'witchesFinger', stock: 4 },
+            { name: 'toadSlime', stock: 28 },
+            { name: 'snail', stock: 8 },
+            { name: 'slug', stock: 32 },
+            { name: 'herbesDeProvence', stock: 8 },
+            { name: 'nut', stock: 18 },
+            { name: 'pumpkin', stock: 2 },
+            { name: 'butterfly', stock: 7 },
+            { name: 'orange', stock: 8 },
+            { name: 'raspberry', stock: 50 },
+            { name: 'RJ45Wire', stock: 14 }];
             // when
             const inventory = controller.getFormattedInventory();
 

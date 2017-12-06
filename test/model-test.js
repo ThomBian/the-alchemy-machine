@@ -16,7 +16,7 @@ describe('Database access loading tests', function(){
                 expect(recipes).to.not.be.undefined;
                 expect(ingredients).to.not.be.undefined;
                 Array.isArray(recipes).should.be.true;
-                recipes[0].name.should.equal('invisibility');
+                recipes[0].name.should.equal('Invisibility potion');
                 ingredients['vinegar'].should.equal(14);
             });
     });

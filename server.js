@@ -36,6 +36,13 @@ function getInventory (req, res) {
     });
 }
 
+function getRecipes (req, res) {
+    const recipes = controller.getRecipes();
+    res.send({
+        recipes
+    });
+}
+
 function home (_, res) {
     res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 }
@@ -43,7 +50,8 @@ function home (_, res) {
 app
     .get('/', home)
     .post('/api/mix', mix)
-    .get('/api/inventory', getInventory);
+    .get('/api/inventory', getInventory)
+    .get('/api/recipes', getRecipes);
 
 app.listen(3000, () => {
     return controller.init()

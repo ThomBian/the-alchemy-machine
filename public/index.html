@@ -8,6 +8,29 @@
     </head>
     <body ng-controller="RecipeController" class="container-fluid">
         <h1>Make your potion !</h1>
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".recipe-modal-lg">Recipes</button>
+
+        <div class="modal fade recipe-modal-lg" tabindex="-1" role="dialog" aria-labelledby="recipeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="recipe-modal-title" class="modal-title">Recipes available</h2>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-unstyled">
+                            <li ng-repeat="recipe in recipes">
+                                <div class="row">
+                                    <h3 class="col-md-12">{{recipe.name}}</h3>
+                                    <span class="col-md-4" ng-repeat="ingredient in recipe.ingredients track by $index">{{ingredient}}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <h1 class="col-md-12 alert alert-success">Here is your inventory : </h2>
             <ul class="list-unstyled">

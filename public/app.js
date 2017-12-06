@@ -16,6 +16,7 @@ app.controller('RecipeController', function RecipeController($scope, $http){
     /** PUBLIC */
     $scope.basket = [];
     $scope.inventory = [];
+    $scope.recipes = [];
 
     $scope.addToCauldron= function(ingredient) {
         if (!disabled) {
@@ -32,7 +33,7 @@ app.controller('RecipeController', function RecipeController($scope, $http){
     $scope.make = function () {
         if(disabled) {
             const ingredientsUsed = $scope.basket;
-            return getRecipeFromServer(ingredientsUsed)
+            return getRecipeResult(ingredientsUsed)
                 .then(openModal)
                 .then(() => {
                     $scope.resetBasket();
@@ -90,6 +91,13 @@ app.controller('RecipeController', function RecipeController($scope, $http){
             });
     }
 
+    function updateRecipes () {
+        return getRecipesFromServer()
+            .then(recipes => {
+                $scope.recipes = recipes;
+            });
+    }
+
     function getInventoryFromServer () {
         const reqConfig = {
             method: 'GET',
@@ -101,7 +109,7 @@ app.controller('RecipeController', function RecipeController($scope, $http){
         return request(reqConfig).then(data => data.inventory || []);
     }
 
-    function getRecipeFromServer (ingredientsUsed) {
+    function getRecipeResult (ingredientsUsed) {
         const ingredients = JSON.stringify(ingredientsUsed);
         const reqConfig = {
             method: 'POST',
@@ -114,8 +122,19 @@ app.controller('RecipeController', function RecipeController($scope, $http){
         return request(reqConfig);
     }
 
+    function getRecipesFromServer() {
+        var reqConfig = {
+            method: 'GET',
+            url: `${SERVER_API_URL}/recipes`,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        return request(reqConfig).then(data => data.recipes || []);
+    }
+
     // on load
     (function () {
-        return updateInventory();
+        return updateInventory().then(() => updateRecipes());
     })();
 });
