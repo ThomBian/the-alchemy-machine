@@ -1,11 +1,17 @@
 const express = require('express');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const controller = require('./modules/controller');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static('public'));
+app.use(express.static('node_modules'));
+
+
+const PUBLIC_DIR = `${__dirname}/public`;
 
 function mix (req, res) {
     try {
@@ -23,8 +29,21 @@ function mix (req, res) {
     }
 }
 
+function getInventory (req, res) {
+    const inventory = controller.getFormattedInventory();
+    res.send({
+        inventory
+    });
+}
+
+function home (_, res) {
+    res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
+}
+
 app
-    .post('/api/mix', mix);
+    .get('/', home)
+    .post('/api/mix', mix)
+    .get('/api/inventory', getInventory);
 
 app.listen(3000, () => {
     return controller.init()

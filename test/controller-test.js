@@ -111,5 +111,36 @@ describe('Controller tests', function(){
             controller.reset();
             expect(() => controller.mix(ingredients)).to.throw('Controller has no data');
         });
+
+        it('should get the inventory with proper format [{name: aname, stock: 12}]', function(){
+            // given
+            const expected = [{
+                name: 'vinegar', stock: 14
+            },{
+                name: 'ratHead', stock: 13
+            },{
+                name: 'lamaDrool', stock: 10
+            },{
+                name: 'parsley', stock: 9
+            },{
+                name: 'hedgehogThorn', stock: 1
+            },{
+                name: 'foxTail', stock: 8
+            },{
+                name: 'carrot', stock: 0
+            },{
+                name: 'apple', stock: 5
+            },{
+                name: 'orange', stock: 8
+            }];
+            // when
+            const inventory = controller.getFormattedInventory();
+
+            // then
+            inventory.forEach((_, currentIdx) => {
+                expect(inventory[currentIdx].name).to.be.equal(expected[currentIdx].name);
+                expect(inventory[currentIdx].stock).to.be.equal(expected[currentIdx].stock);
+            })
+        });
     });
 });

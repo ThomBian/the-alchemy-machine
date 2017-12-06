@@ -25,6 +25,17 @@ function getInventory() {
     return inventory;
 }
 
+function getFormattedInventory () {
+    const formattedInventory = [];
+    Object.keys(inventory).forEach(key => {
+        formattedInventory.push({
+            name: key,
+            stock: inventory[key]
+        });
+    });
+    return formattedInventory;
+}
+
 function mix (ingredients) {
     assertDataAreLoaded();
     assertStockAreOk(ingredients);
@@ -56,5 +67,6 @@ module.exports = {
     reset,
     getRecipes,
     getInventory,
+    getFormattedInventory,
     mix
 }
