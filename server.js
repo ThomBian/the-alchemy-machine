@@ -8,8 +8,6 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
-app.use(express.static('node_modules'));
-
 
 const PUBLIC_DIR = `${__dirname}/public`;
 
